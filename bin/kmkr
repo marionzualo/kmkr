@@ -3,23 +3,26 @@
 require 'optparse'
 require 'methadone'
 require 'kmkr.rb'
+require 'pry'
 
 class App
   include Methadone::Main
   include Methadone::CLILogging
 
-  main do # Add args you want: |like,so|
-    # your program code here
-    # You can access CLI options via
-    # the options Hash
+  main do |extension|
+    dir = Kmkr::FileManager.new.file_dir
+    file_prefix = Kmkr::PrefixDate.new.to_s
+    filename = "#{dir}/#{file_prefix}.#{extension}"
+    debug "filename to create: #{filename}"
+    File.new(filename, "w").close
   end
 
   # supplemental methods here
 
   # Declare command-line interface here
 
-  # description "one line description of your app"
-  #
+  description "Creates files with names prefixed by date"
+
   # Accept flags via:
   # on("--flag VAL","Some flag")
   # options[flag] will contain VAL
@@ -30,8 +33,8 @@ class App
   # Or, just call OptionParser methods on opts
   #
   # Require an argument
-  # arg :some_arg 
-  #
+  arg :extension, "Extension of the file to create"
+
   # # Make an argument optional
   # arg :optional_arg, :optional
 
