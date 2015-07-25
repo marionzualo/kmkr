@@ -10,11 +10,8 @@ class App
   include Methadone::CLILogging
 
   main do |extension|
-    dir = Kmkr::FileManager.new.file_dir
     file_prefix = Kmkr::PrefixDate.new.to_s
-    filename = "#{dir}/#{file_prefix}.#{extension}"
-    debug "filename to create: #{filename}"
-    File.new(filename, "w").close
+    Kmkr::FileManager.new(file_prefix, extension).create_file
   end
 
   # supplemental methods here

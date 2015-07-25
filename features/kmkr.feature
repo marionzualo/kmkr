@@ -17,3 +17,9 @@ Feature: Create files with a date prefix
   Scenario: Create an .md file with today's date
    When I successfully run `kmkr md`
    Then a file with a "md" extension and today's date should exist
+
+  Scenario: Do not overwrite file if it already exists
+   Given a file with a "md" extension and today's date exists with content "ola"
+   When I successfully run `kmkr md`
+   Then a file with a "md" extension and today's date should exist
+   And the file with a "md" extension and today's date sould have content "ola"
