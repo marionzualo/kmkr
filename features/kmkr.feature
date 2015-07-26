@@ -10,8 +10,9 @@ Feature: Create files with a date prefix
     And there should be a one line summary of what the app does
     And the banner should document that this app takes options
     And the following options should be documented:
-      |--version  |
-      |--directory|
+      |--version    |
+      |--directory  |
+      |--date-format|
     And the banner should document that this app's arguments are:
       |extension|which is required|
 
@@ -28,3 +29,7 @@ Feature: Create files with a date prefix
   Scenario: Create file in specified directry
     When I successfully run `kmkr md -d that_dir`
     Then a file with a "md" extension and today's date should exist within "that_dir"
+
+  Scenario: Create a file with today's date and a specified date format
+    When I successfully run `kmkr md -f %Y%m%d`
+    Then a file with a "md" extension and today's date with format "%Y%m%d" should exist

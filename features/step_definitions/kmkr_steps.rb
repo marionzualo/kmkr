@@ -1,9 +1,5 @@
-Then(/^a file with a "([^"]*)" extension and today's date should exist(?: within "([^"]*)")?/) do |extension, directory|
-  if directory
-    step "the file named \"#{directory}/#{filename(extension)}\" should exist"
-  else
-    step "the file named \"#{filename(extension)}\" should exist"
-  end
+Then(/^a file with a "([^"]*)" extension and today's date(?: with format "([^"]*)")? should exist(?: within "([^"]*)")?/) do |extension, date_format, directory|
+  step "the file named \"#{filename(extension, date_format || "%d-%m-%Y", directory)}\" should exist"
 end
 
 Given(/^a file with a "([^"]*)" extension and today's date exists with content "([^"]*)"$/) do |extension, content|
@@ -19,7 +15,13 @@ Then(/^the file with a "([^"]*)" extension and today's date sould have content "
   step "the file \"#{filename(extension)}\" should contain \"#{content}\""
 end
 
-def filename(extension)
-  today = Date.today.strftime("%d-%m-%Y")
+def filename(extension, date_format = "%d-%m-%Y", directory = nil)
+  today = Date.today.strftime(date_format)
   filename = "#{today}.#{extension}"
+
+  if directory
+    filename.prepend("#{directory}/")
+  else
+    filename
+  end
 end

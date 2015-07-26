@@ -1,11 +1,11 @@
 module Kmkr
   class PrefixDate
-    def initialize(date = Date.today)
-      @date = date
+    def initialize(format = '%d-%m-%Y')
+      @format = format
     end
 
     def to_s
-      @date.strftime('%d-%m-%Y')
+      Date.today.strftime(@format)
     end
   end
 end
