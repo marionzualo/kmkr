@@ -11,7 +11,7 @@ class App
 
   main do |extension|
     file_prefix = Kmkr::PrefixDate.new.to_s
-    Kmkr::FileManager.new(file_prefix, extension).create_file
+    Kmkr::FileManager.new(file_prefix, extension, options[:directory]).create_file
   end
 
   # supplemental methods here
@@ -29,7 +29,8 @@ class App
   #
   # Or, just call OptionParser methods on opts
   #
-  # Require an argument
+  options[:directory] = Dir.pwd
+  on("-d DIR", "--directory", "Set the location where the file should be saved")
   arg :extension, "Extension of the file to create"
 
   # # Make an argument optional

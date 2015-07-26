@@ -1,5 +1,9 @@
-Then(/^a file with a "([^"]*)" extension and today's date should exist$/) do |extension|
-  step "the file named \"#{filename(extension)}\" should exist"
+Then(/^a file with a "([^"]*)" extension and today's date should exist(?: within "([^"]*)")?/) do |extension, directory|
+  if directory
+    step "the file named \"#{directory}/#{filename(extension)}\" should exist"
+  else
+    step "the file named \"#{filename(extension)}\" should exist"
+  end
 end
 
 Given(/^a file with a "([^"]*)" extension and today's date exists with content "([^"]*)"$/) do |extension, content|
