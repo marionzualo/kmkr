@@ -2,10 +2,11 @@ module Kmkr
   class FileManager
     attr_reader :current_dir
 
-    def initialize(file_prefix, extension, current_dir = Dir.pwd)
+    def initialize(file_prefix, extension, current_dir = Dir.pwd, suffix = "")
       @current_dir = current_dir
       @file_prefix = file_prefix
       @extension = extension
+      @suffix = suffix
     end
 
     def create_file
@@ -15,10 +16,10 @@ module Kmkr
 
     private
 
-    attr_reader :file_prefix, :extension
+    attr_reader :file_prefix, :extension, :suffix
 
     def filename
-      filename = "#{current_dir}/#{file_prefix}.#{extension}"
+      filename = "#{current_dir}/#{file_prefix}#{suffix}.#{extension}"
     end
 
     def create_directory

@@ -11,7 +11,7 @@ class App
 
   main do |extension|
     file_prefix = Kmkr::PrefixDate.new(options[:f]).to_s
-    Kmkr::FileManager.new(file_prefix, extension, options[:directory]).create_file
+    Kmkr::FileManager.new(file_prefix, extension, options[:directory], options[:suffix]).create_file
 
     debug("date format: #{options[:f]}")
     debug("file prefix: #{file_prefix}")
@@ -35,8 +35,10 @@ class App
   #
   options[:directory] = Dir.pwd
   options[:f] = '%d-%m-%Y'
+  options[:suffix] = ""
   on("-d DIR", "--directory", "Set the location where the file should be saved")
   on('-f DATEFORMAT', '--date-format', 'Use a different date format for the filename prefixes')
+  on('-s SUFFIX', '--suffix', 'Add a suffix to the filename')
   arg :extension, "Extension of the file to create"
 
   # # Make an argument optional

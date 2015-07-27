@@ -13,6 +13,7 @@ Feature: Create files with a date prefix
       |--version    |
       |--directory  |
       |--date-format|
+      |--suffix     |
     And the banner should document that this app's arguments are:
       |extension|which is required|
 
@@ -33,3 +34,7 @@ Feature: Create files with a date prefix
   Scenario: Create a file with today's date and a specified date format
     When I successfully run `kmkr md -f %Y%m%d`
     Then a file with a "md" extension and today's date with format "%Y%m%d" should exist
+
+  Scenario: Create a file with a suffix
+    When I successfully run `kmkr md -s _that_thing`
+    Then a file with a "md" extension and today's date with suffix "_that_thing" should exist
