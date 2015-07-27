@@ -13,9 +13,10 @@ class App
     prefix = Kmkr::PrefixDate.new(options[:f]).to_s
     Kmkr::FileManager.new(prefix, extension, options[:directory], options[:suffix]).create_file
 
+    debug("directory: #{options[:directory]}")
     debug("date format: #{options[:f]}")
     debug("prefix: #{prefix}")
-    debug("directory: #{options[:directory]}")
+    debug("suffix: #{options[:suffix]}")
   end
 
   # supplemental methods here
