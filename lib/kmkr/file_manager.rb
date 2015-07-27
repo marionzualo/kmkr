@@ -11,7 +11,7 @@ module Kmkr
 
     def create_file
       create_directory unless File.exist?(current_dir)
-      File.new(filename, "w").close unless File.exist?(filename)
+      File.new(filename, 'w').close unless File.exist?(filename)
     end
 
     private

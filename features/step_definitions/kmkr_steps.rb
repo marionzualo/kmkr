@@ -15,7 +15,7 @@ Then(/^the file with a "([^"]*)" extension and today's date sould have content "
   step "the file \"#{filename(extension)}\" should contain \"#{content}\""
 end
 
-def filename(extension, date_format = "%d-%m-%Y", suffix = "", directory = nil)
+def filename(extension, date_format = '%d-%m-%Y', suffix = '', directory = nil)
   today = Date.today.strftime(date_format)
   filename = "#{today}#{suffix}.#{extension}"
 
