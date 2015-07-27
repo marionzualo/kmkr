@@ -10,11 +10,11 @@ class App
   include Methadone::CLILogging
 
   main do |extension|
-    file_prefix = Kmkr::PrefixDate.new(options[:f]).to_s
-    Kmkr::FileManager.new(file_prefix, extension, options[:directory], options[:suffix]).create_file
+    prefix = Kmkr::PrefixDate.new(options[:f]).to_s
+    Kmkr::FileManager.new(prefix, extension, options[:directory], options[:suffix]).create_file
 
     debug("date format: #{options[:f]}")
-    debug("file prefix: #{file_prefix}")
+    debug("prefix: #{prefix}")
     debug("directory: #{options[:directory]}")
   end
 
