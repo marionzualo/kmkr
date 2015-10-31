@@ -13,7 +13,7 @@ Because I create notes files everyday with a date prefix and I got tired of manu
 Specify the extension of the file as an argument.
 
 ```bash
-kmkr <extension>
+$ kmkr <extension>
 ```
 
 ### Examples
@@ -29,12 +29,15 @@ $ kmkr rb -s _that_thing
 ```
 ### Options
 `-f`, `--date-format`
-Use a different date format for the filename prefixes.
+
+Use a different date format for the filename prefixes. The format directives used are the ones for [Ruby's strftime method](http://ruby-doc.org/core-2.2.2/Time.html#method-i-strftime).
 
 `-d`, `--directory`
+
 Set the location where the file should be saved.
 
 `-s`, `--suffix`
+
 Add a suffix to the filename
 
 You can always get more details using `kmkr -h`.
