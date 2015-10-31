@@ -1,29 +1,43 @@
-# Kmkr
+# kmkr
+kmkr is a CLI to create files prefixed by date (e.g. `20151031.md`). It supports creating files with any file extension,
+date format and a suffix.
 
-TODO: Write a gem description
+## Why
+Because I create notes files everyday with a date prefix and I got tired of manually typing the date myself.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'kmkr'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install kmkr
 
 ## Usage
+Specify the extension of the file as an argument.
 
-TODO: Write usage instructions here
+```bash
+kmkr <extension>
+```
 
-## Contributing
+### Examples
+```bash
+# Create an .md file with today's date (e.g. 31-10-2015.md)
+$ kmkr md
 
-1. Fork it ( https://github.com/[my-github-username]/kmkr/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+# Create a .rb file with a different date format (e.g. 20151031.rb)
+$ kmkr rb -f %Y%m%d
+
+# Create a .rb file with a suffix (e.g. 31-10-2015_that_thing.rb)
+$ kmkr rb -s _that_thing
+```
+### Options
+`-f`, `--date-format`
+Use a different date format for the filename prefixes.
+
+`-d`, `--directory`
+Set the location where the file should be saved.
+
+`-s`, `--suffix`
+Add a suffix to the filename
+
+You can always get more details using `kmkr -h`.
+
+## License
+MIT (c) Mário Nzualo
